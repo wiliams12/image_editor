@@ -19,6 +19,30 @@ class Editor():
         plt.axis('off')  # hide axes
         plt.show()
 
+    def draw(self, pixel_set):
+        """
+        pixel_set is the set of pixels to be colored. in this format: ((x,y), (r,g,b)), 
+        the pixels are colored by the GUI in real time. After the release of the button, 
+        it will be altered in the actuall image with this function.
+        """
+        for i in pixel_set:
+            self.pixels[i[0][1]][i[0][0]] = i[1]
+
+
+    def crop(self, new_size, top_left):
+        """
+        new_size gives the new proportions, top_left indicates from where should the image be cut
+        top_left starts at (0, 0)
+        """
+        new_width, new_height = new_size
+        height, width = self.pixels.shape[:2]
+
+        if new_width > width or new_height > height:
+            return
+
+        self.pixels = self.pixels[top_left[1]:top_left[1]+new_size[1], top_left[0]:top_left[0]+new_size[0], :]
+        
+
     def color_boost(self, amount, channel):
         """
         channel: 0-R, 1-G, 2-B
