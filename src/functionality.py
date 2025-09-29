@@ -8,16 +8,14 @@ from helpers import convolve
 class Editor():
     def __init__(self):
         self.pixels = None
-        self.brightnes = 50
 
     def load(self, address):
         img = Image.open(address)
         self.pixels = np.array(img)
         
     def show(self):
-        plt.imshow(self.pixels)
-        plt.axis('off')  # hide axes
-        plt.show()
+        pil_image = Image.fromarray(self.pixels)
+        return pil_image
 
     def draw(self, pixel_set):
         """

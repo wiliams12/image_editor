@@ -5,7 +5,7 @@ from mainwindow import MainWindow
 app = QApplication()
 editor = Editor()
 
-window = MainWindow(app)
+window = MainWindow(app, editor)
 window.show()
 
 app.exec()
