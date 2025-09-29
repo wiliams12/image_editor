@@ -1,3 +1,0 @@
-- add states to the editor
-- add GUI
-- add painting

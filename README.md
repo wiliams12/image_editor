@@ -14,5 +14,3 @@
 # Technologies
 - PyQt for GUI
 - uses numpy to work with images. Though not very effective in some cases, done for educational purposes.
-- uses Flask to render a web page.
-- image procession on the backend
