@@ -153,6 +153,7 @@ class MainWindow(QMainWindow):
 
 
     def update_img(self, func):
+        self.editor.new_edit()
         func()
         self.update_display()
 

@@ -26,7 +26,7 @@ class Editor():
             for i in range(max_index - self.current):
                 self.state.pop()
 
-        self.state.append(copy.deepcopy(self.state[self.current]))
+        self.state.append(np.copy(self.state[self.current]))
         self.current += 1
             
     def go_back(self):
