@@ -3,7 +3,7 @@ from PySide6.QtWidgets import (
     QVBoxLayout, QHBoxLayout, QMenuBar, QToolBar,
     QStatusBar, QLabel, QFrame, QFileDialog, QPushButton, QDialog, QCheckBox, QSlider, QSizePolicy
 )
-from PySide6.QtGui import QAction, QPixmap
+from PySide6.QtGui import QAction, QPixmap, QIcon
 from PySide6.QtCore import Qt
 
 from PIL import Image, ImageQt, ImageOps
@@ -11,6 +11,8 @@ from PIL import Image, ImageQt, ImageOps
 from ui_bars import *
 
 from image_label import ImageLabel
+
+import numpy as np
 
 
 
@@ -20,6 +22,7 @@ class MainWindow(QMainWindow):
         self.app = app
         self.editor = editor
         self.setWindowTitle("Image Editor")
+        self.setWindowIcon(QIcon("static\icon.png"))
 
         # --- Menu bar ---
         self.menu_bar = MenuBar(self)
@@ -41,7 +44,9 @@ class MainWindow(QMainWindow):
         # --- Image display area ---
         self.image_label = ImageLabel(self)
         self.image_label.setFrameShape(QFrame.StyledPanel)
+        self.image_label.setScaledContents(False)
         self.image_label.setAlignment(Qt.AlignCenter)
+        self.image_label.setSizePolicy(QSizePolicy.Ignored, QSizePolicy.Ignored)
         main_layout.addWidget(self.image_label)
 
 
@@ -185,3 +190,22 @@ class MainWindow(QMainWindow):
     def redo(self):
         self.editor.go_forward()
         self.update_display()
+
+    def save_img(self):
+        if not self.editor.state or self.editor.state[self.editor.current] is None:
+            self.status_bar.showMessage("No image to save.")
+            return
+
+        # Ask the user where to save
+        file_path, _ = QFileDialog.getSaveFileName(
+            self,
+            "Save Image As",
+            "",
+            "Images (*.png *.jpg *.jpeg *.bmp *.gif)"
+        )
+
+        if file_path:
+            # Convert the current state's pixels to an image
+            image = Image.fromarray(self.editor.state[self.editor.current].astype(np.uint8))
+            image.save(file_path)
+            self.status_bar.showMessage(f"Saved: {file_path}")

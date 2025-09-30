@@ -107,6 +107,17 @@ class ImageLabel(QLabel):
 
         rgb = (self.draw_color.red(), self.draw_color.green(), self.draw_color.blue())
 
+
+        # Average scale for simplicity
+        scale = (x_ratio + y_ratio) / 2
+
+        # Base pen size in UI units (e.g., 10 pixels on screen)
+        ui_pen_size = 10
+
+        # Adjust pen size in image pixels
+        self.pen_size = int(ui_pen_size * scale)
+
+
         radius = max(1, self.pen_size // 2)
         for dy in range(-radius, radius + 1):
             for dx in range(-radius, radius + 1):

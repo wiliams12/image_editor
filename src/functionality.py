@@ -13,9 +13,10 @@ class Editor():
 
     def load(self, address):
         img = Image.open(address)
+        self.state = []
         self.state.append(np.array(img))
         self.current = 0
-        
+
     def show(self):
         pil_image = Image.fromarray(self.state[self.current])
         return pil_image

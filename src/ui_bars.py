@@ -22,7 +22,7 @@ class MenuBar(QMenuBar):
 
         quit_action.triggered.connect(parent.close)
         open_action.triggered.connect(parent.open_image)
-        #save_action.triggered.connect()
+        save_action.triggered.connect(parent.save_img)
 
 
 class ToolBar(QToolBar):
@@ -65,7 +65,7 @@ class ToolBar(QToolBar):
 
         # --- Box Blur ---
         box_blur_action = QAction("Box Blur", self)
-        box_blur_action.triggered.connect(lambda: parent.ask_value_and_apply(parent.box_blur, 1, 5, 3, "Box Blur Size"))
+        box_blur_action.triggered.connect(lambda: parent.ask_value_and_apply(parent.box_blur, 1, 25, 3, "Box Blur Size"))
         self.addAction(box_blur_action)
 
         # --- Saturation ---
