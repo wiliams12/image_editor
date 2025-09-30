@@ -1,10 +1,7 @@
 from PIL import Image
 import numpy as np
-import matplotlib.pyplot as plt
 import cv2
-from scipy import signal
 from helpers import convolve
-import copy
 
 class Editor():
     def __init__(self):

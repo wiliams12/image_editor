@@ -17,3 +17,9 @@
 - uses OpenCV for faster kernel operation
 
 # How to use
+- either run it as a Python or you can make it into an executable
+1. install PyInstaller 
+```pip3 install PyInstaller```
+2. create the executable
+```pyinstaller --noconsole --onedir --icon=static\icon.png src/main.py```
+3. the executable will be located in dist/main/

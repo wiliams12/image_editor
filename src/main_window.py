@@ -1,9 +1,10 @@
 from PySide6.QtWidgets import (
-    QApplication, QMainWindow, QWidget,
-    QVBoxLayout, QHBoxLayout, QMenuBar, QToolBar,
-    QStatusBar, QLabel, QFrame, QFileDialog, QPushButton, QDialog, QCheckBox, QSlider, QSizePolicy
+    QMainWindow, QWidget, QSizePolicy,
+    QVBoxLayout, QHBoxLayout, QStatusBar, 
+    QLabel, QFrame, QFileDialog, QPushButton, 
+    QDialog, QCheckBox, QSlider
 )
-from PySide6.QtGui import QAction, QPixmap, QIcon
+from PySide6.QtGui import QPixmap, QIcon
 from PySide6.QtCore import Qt
 
 from PIL import Image, ImageQt, ImageOps

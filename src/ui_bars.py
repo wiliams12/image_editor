@@ -1,10 +1,6 @@
-from PySide6.QtWidgets import (
-    QApplication, QMainWindow, QWidget,
-    QVBoxLayout, QHBoxLayout, QMenuBar, QToolBar,
-    QStatusBar, QLabel, QFrame, QFileDialog, QPushButton
-)
+from PySide6.QtWidgets import QMenuBar, QToolBar
 
-from PySide6.QtGui import QAction, QPixmap
+from PySide6.QtGui import QAction 
 
 class MenuBar(QMenuBar):
     def __init__(self, parent=None):
