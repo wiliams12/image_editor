@@ -33,59 +33,57 @@ class ToolBar(QToolBar):
 
         # --- Draw ---
         draw_action = QAction("Draw", self)
-        #draw_action.triggered.connect(parent.start_draw_mode)
+        draw_action.triggered.connect(lambda: parent.image_label.enable_draw(True))
         self.addAction(draw_action)
 
         # --- Crop ---
         crop_action = QAction("Crop", self)
-        #crop_action.triggered.connect(parent.start_crop_mode)
+        crop_action.triggered.connect(lambda: parent.image_label.enable_crop(True))
         self.addAction(crop_action)
 
-        # --- Color Boost ---
-        color_boost_action = QAction("Color Boost", self)
-        #color_boost_action.triggered.connect(parent.color_boost)
-        self.addAction(color_boost_action)
 
         # --- Black & White ---
         bw_action = QAction("Black & White", self)
-        bw_action.triggered.connect(parent.black_and_white)
+        bw_action.triggered.connect(lambda: parent.update_img(parent.black_and_white))
         self.addAction(bw_action)
 
         # --- Sharpen ---
         sharpen_action = QAction("Sharpen", self)
-        #sharpen_action.triggered.connect(parent.sharpen)
+        sharpen_action.triggered.connect(lambda: parent.update_img(parent.sharpen))
         self.addAction(sharpen_action)
+
+
+        #---- Edge enhancer
+        edge_action = QAction("Edge Enhancer", self)
+        edge_action.triggered.connect(lambda: parent.update_img(parent.edge_enhancer))
+        self.addAction(edge_action)
+
+        # --- Color Boost ---
+        color_boost_action = QAction("Color Boost", self)
+        color_boost_action.triggered.connect(lambda: parent.ask_value_and_apply(parent.color_boost, 0, 100, 50, "Color Boost Intensity", with_channels=True))
+        self.addAction(color_boost_action)
 
         # --- Box Blur ---
         box_blur_action = QAction("Box Blur", self)
-        #box_blur_action.triggered.connect(parent.box_blur)
+        box_blur_action.triggered.connect(lambda: parent.ask_value_and_apply(parent.box_blur, 1, 5, 3, "Box Blur Size"))
         self.addAction(box_blur_action)
 
         # --- Saturation ---
         saturation_action = QAction("Saturation", self)
-        #saturation_action.triggered.connect(parent.adjust_saturation)
+        saturation_action.triggered.connect(lambda: parent.ask_value_and_apply(parent.saturation, 0, 100, 50, "Saturation"))
         self.addAction(saturation_action)
 
         # --- Brightness ---
         brightness_action = QAction("Brightness", self)
-        #brightness_action.triggered.connect(parent.adjust_brightness)
+        brightness_action.triggered.connect(lambda: parent.ask_value_and_apply(parent.brightness, 0, 100, 50, "Brightness"))
         self.addAction(brightness_action)
 
         # --- Undo ---
         undo_action = QAction("Undo", self)
-        #undo_action.triggered.connect(parent.undo_action)
+        undo_action.triggered.connect(parent.undo)
         self.addAction(undo_action)
 
         # --- Redo ---
         redo_action = QAction("Redo", self)
-        #redo_action.triggered.connect(parent.redo_action)
+        redo_action.triggered.connect(parent.redo)
         self.addAction(redo_action)
-
-
-class SideBar(QFrame):
-    def __init__(self, parent=None):
-        super().__init__(parent)
-        layout = QVBoxLayout(self)
-        layout.addWidget(QLabel("Sidebar info area"))
-        # add more widgets later
-
