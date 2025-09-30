@@ -7,9 +7,9 @@
 # Features
 - simple filters ✅
 - color chanels editor ✅
-- cropping 
+- cropping ✅
 - brightness, exposition... ✅
-- painting
+- painting ✅
 
 # Technologies
 - PyQt for GUI
