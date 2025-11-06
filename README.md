@@ -1,23 +1,33 @@
-# Image Editor with web interface
-- this project is educational. 
-- Image filters and basic GUI learning project.
-- not all approaches are optimal (handling images as three-dimensional arrays, ignoring the use of libraries...)
-- simple filters and cropping, no image deformations implemented
+# 🖼️ Simple image editor in Python
 
-# Features
-- simple filters ✅
-- color chanels editor ✅
-- cropping ✅
-- brightness, exposition... ✅
-- painting ✅
+An **educational image editor** project built to explore image filters and GUI programming in Python.  
+Some methods (like handling images as 3D arrays or skipping certain libraries) are intentionally simple for learning purposes.  
+Features include basic filters, color editing, and cropping — no image deformations implemented (yet).
 
-# Technologies
-- PyQt for GUI
-- uses numpy to work with images. Though not very effective in some cases, done for educational purposes.
-- uses OpenCV for faster kernel operation
+---
 
-# How to use
-- either run it as a Python or you can make it into an executable
+<img src="static/README.png" heigh=500>
+
+---
+
+## ✨ Features
+- ✅ Simple filters  
+- ✅ Color channel editor  
+- ✅ Cropping  
+- ✅ Brightness and Saturation adjustment  
+- ✅ Painting  
+
+---
+
+## ⚙️ Technologies
+- **PyQt** — GUI framework  
+- **NumPy** — Used for working with images (educational, not performance-focused)  
+- **OpenCV** — Accelerated kernel operations  
+
+---
+
+## 🚀 How to Use
+
 1. install PyInstaller 
 ```pip3 install PyInstaller```
 2. create the executable
